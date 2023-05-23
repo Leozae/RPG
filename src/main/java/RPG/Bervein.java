@@ -1,4 +1,8 @@
-package com.mycompany.mavenproject1;
+package RPG;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 
 /**
  *

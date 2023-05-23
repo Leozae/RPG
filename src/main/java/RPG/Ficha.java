@@ -1,15 +1,28 @@
+package RPG;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+
+
 /**
  *
  * @author leonardo.godoy
- */
+*/
+@Entity
 public class Ficha {
     
     // Personagem
+    @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private String name;
     private short age;
     private double range;
