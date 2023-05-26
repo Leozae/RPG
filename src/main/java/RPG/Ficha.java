@@ -9,7 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
+import javax.persistence.Column;
+import javax.persistence.Transient;
 
 
 /**
@@ -22,36 +23,60 @@ public class Ficha {
     // Personagem
     @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    private int id;
+    @Column(name = "name")
     private String name;
-    private short age;
+    @Column(name = "age")
+    private int age;
+    @Column(name = "range")
     private double range;
+    @Column(name = "color")
     private String color;
     //Classe
+    @Column(name = "kits")
     private String kits;
+    @Column(name = "region")
+    private String region;
+    @Column(name = "divinity")
     private String divinity;
+    @Column(name = "funct")
     private String funct;
-    private byte points;
+    @Column(name = "points")
+    private int points;
+    @Column(name = "uniqueAdvantage")
     private String uniqueAdvantage;
     //Ações
-    private byte iniciative = 0;
-    private byte moviment = 0;
+    @Transient
+    private int iniciative = 0;
+    @Transient
+    private int moviment = 0;
+    @Transient
     private int weight =  0;
+    @Transient
     private int maxWeight = 100;
     //Caracteristicas
-    private byte strenght = 0;
-    private byte hability = 0;
-    private byte resistence = 0;
-    private byte armor = 0;
-    private byte pdf = 0;
+    @Column(name = "strenght")
+    private int strenght = 0;
+    @Column(name = "hability")
+    private int hability = 0;
+    @Column(name = "resistence")
+    private int resistence = 0;
+    @Column(name = "armor")
+    private int armor = 0;
+    @Column(name = "pdf")
+    private int pdf = 0;
     // Atributos não distribuiveis
+    @Transient
     private int PV = 1;
+    @Transient
     private int PM = 1;
+    @Column(name = "XP")
     private int XP = 1;
+    @Transient
     private int MaxPV;
+    @Transient
     private int MaxPM;
-    
-    
+  
     public void setName(String name){
         this.name = name;
     }
@@ -60,11 +85,11 @@ public class Ficha {
       return name;
     }
     
-    public void setAge(short age){
+    public void setAge(int age){
         this.age = age;
     }
     
-    public short getAge(){
+    public int getAge(){
         return age;
     }
     
@@ -92,6 +117,13 @@ public class Ficha {
       return kits;
     }
     
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
     public void setDivinity(String divinity){
         this.divinity = divinity;
     }
@@ -108,11 +140,11 @@ public class Ficha {
         return funct;
     }
     
-    public void setPoints(byte points){
+    public void setPoints(int points){
         this.points = points;
     }
     
-   public byte getPoints(){
+   public int getPoints(){
        return points;
    }
    
@@ -124,19 +156,19 @@ public class Ficha {
       return uniqueAdvantage;
     }
     
-    public void setIniciative(byte iniciative){
+    public void setIniciative(int iniciative){
         this.iniciative = iniciative;
     }
     
-    public byte getIniciative(){
+    public int getIniciative(){
         return iniciative;
     }
     
-    public void setMoviment(byte moviment){
+    public void setMoviment(int moviment){
         this.moviment = moviment;
     }
     
-    public byte getMoviment(){
+    public int getMoviment(){
         return moviment;
     }
     
@@ -170,43 +202,43 @@ public class Ficha {
       return maxWeight;
     }
     
-    public void setStrenght(byte strenght){
+    public void setStrenght(int strenght){
         this.strenght = strenght;
     }
     
-    public byte getStrenght(){
+    public int getStrenght(){
         return strenght;
     }
     
-    public void setHability(byte hability){
+    public void setHability(int hability){
         this.hability = hability;
     }
     
-    public byte getHability(){
+    public int getHability(){
         return hability;
     }
     
-    public void setResistence(byte resistence){
+    public void setResistence(int resistence){
         this.resistence = resistence;
     }
     
-   public byte getResistence(){
+   public int getResistence(){
        return resistence;
    }
 
-    public void setArmor(byte armor){
+    public void setArmor(int armor){
         this.armor = armor;
    }
     
-    public byte getArmor(){
+    public int getArmor(){
       return armor;
     }
     
-    public void setPdf(byte pdf){
+    public void setPdf(int pdf){
         this.pdf = pdf;
     }
     
-    public byte getPdf(){
+    public int getPdf(){
         return pdf;
     }
     
@@ -252,5 +284,13 @@ public class Ficha {
     }   
     public int getMaxPM(){
         return MaxPM;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
