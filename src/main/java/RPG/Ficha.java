@@ -5,30 +5,38 @@ package RPG;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
+import javax.persistence.Table;
 import javax.persistence.Transient;
-
+import javax.persistence.NamedQuery;
+import javax.persistence.NamedQueries;
 
 /**
  *
  * @author leonardo.godoy
 */
 @Entity
-public class Ficha {
-    
+@Table(name = "Ficha")
+@NamedQueries({
+})
+        
+
+public class Ficha implements Serializable {
     // Personagem
     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     @Column(name = "name")
     private String name;
     @Column(name = "age")
     private int age;
-    @Column(name = "range")
+    @Column(name = "rangeActivity")
     private double range;
     @Column(name = "color")
     private String color;
