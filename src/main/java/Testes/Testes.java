@@ -11,7 +11,10 @@ import javax.persistence.Persistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.codehaus.mojo.exec.ExecMojo;
-
+import javax.persistence.NamedQuery;
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -42,18 +45,34 @@ public class Testes {
        f.setXP(8);
        
        
-       
        EntityManagerFactory emf = Persistence.createEntityManagerFactory("RPG-PU");
        EntityManager em = emf.createEntityManager();
        
        em.getTransaction().begin();
-       em.persist(f);
-       em.getTransaction().commit();
+       //em.persist(f);
        
+       List<Ficha> var = em.createNamedQuery("Character", Ficha.class)
+       //.setParameter("uniqueAdvantage", "Elfo")
+       .getResultList();
+       
+       
+       for(Ficha personagem: var){
+        System.out.println("Você está vendo a ficha de: " + personagem.getName());
+       }
+       
+    
+        Ficha lv = em.createNamedQuery("Character", Ficha.class)
+     .getSingleResult();
+     lv.setXP(2);
+     
+     
+    System.out.println("Parabéns, você upou de nível, seu nível atual é:" + lv.getXP());   
+      
+   
+       em.merge(lv);
+       em.getTransaction().commit();
        em.close();
        emf.close();
-       
-       
        
     }
     
