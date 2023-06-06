@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Testes;
+package RPG;
 
+import static Testes.Testes.em;
+import java.util.List;
 import RPG.Bervein;
 import RPG.Ficha;
 import javax.persistence.Entity;
@@ -15,28 +17,19 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-
-
 /**
  *
  * @author leonardo.godoy
  */
-public class Testes{    
-       
-    public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("RPG-PU");
-    public static EntityManager em = emf.createEntityManager();       
-       
-    public static void main(String[] args) {
-        // INICIAR HTTP
-        em.close();
-        emf.close();
-    }
-       
-    public static void create(){
+public class CharacterController {
+    
+
+
+    public  EntityManagerFactory emf = Persistence.createEntityManagerFactory("RPG-PU");
+    public  EntityManager em = emf.createEntityManager();
+
+    public void create(){
            
            
        Ficha f = new Ficha();
@@ -66,8 +59,7 @@ public class Testes{
        em.getTransaction().commit();
    }
     
-    
-    public static void update(){
+    public void update(){
            
         Ficha lv = em.createNamedQuery("characterLevel", Ficha.class)
         .setParameter("level", "Shiro")          
@@ -83,7 +75,7 @@ public class Testes{
 
        }
          
-    public static void printCharacters(){
+    public void printCharacters(){
     
         List<Ficha> var = em.createNamedQuery("characterName", Ficha.class)
        //.setParameter("uniqueAdvantage", "Elfo")
@@ -91,9 +83,7 @@ public class Testes{
        
        
         for(Ficha personagem: var){
-            System.out.println("Você está vendo a ficha de: " + personagem.getName());
+            System.out.println("Você está vendo a ficha de: " + personagem.getName());  
         }
     }
-    
-        
 }

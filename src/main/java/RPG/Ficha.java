@@ -23,6 +23,10 @@ import javax.persistence.NamedQueries;
 @Entity
 @Table(name = "Ficha")
 @NamedQueries({
+@NamedQuery(name = "characterName",
+query = "SELECT f FROM Ficha f"),
+@NamedQuery(name = "characterLevel",
+query = "SELECT f FROM Ficha f WHERE name = :level")
 })
         
 
